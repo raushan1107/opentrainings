@@ -195,6 +195,30 @@ Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local)
 [SWA CLI](https://azure.github.io/static-web-apps-cli/) running both
 together.
 
+## Live deployment
+
+Deployed and verified working end-to-end (both `/api/contact` and
+`/api/subscribe` tested against the live URL, confirmed writing real rows to
+Table Storage, test rows then deleted):
+
+| | |
+|---|---|
+| Site | https://thankful-flower-071df8710.5.azurestaticapps.net/ |
+| Resource group | `rg-opentrainings` (Central US) |
+| Static Web App | `opentrainings` — **Free** tier |
+| Storage account | `stopentrainings` — **Standard_LRS**, StorageV2, Cool access tier |
+| Tables | `ContactRequests`, `Subscribers` (created automatically on first write) |
+| Repo | https://github.com/raushan1107/opentrainings |
+
+Both SKUs are the cheapest available for this shape of workload: the Static
+Web App Free tier costs nothing (100GB bandwidth/month, managed Functions
+included), and Table Storage on Standard_LRS bills per-use with no minimum —
+at contact-form volume this runs to a few cents a month, if that. There is
+no App Service Plan, VM, or database server involved anywhere.
+
+Every push to `main` redeploys automatically via
+`.github/workflows/azure-static-web-apps.yml`.
+
 ## Editing content
 
 Almost everything a non-developer would want to change (services, the

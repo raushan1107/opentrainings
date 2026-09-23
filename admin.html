@@ -26,7 +26,7 @@
     <div class="admin-actions">
       <span class="tag" id="admin-count" style="display:none;"></span>
       <button class="btn btn-outline btn-sm" id="admin-refresh" style="display:none;">Refresh</button>
-      <button class="btn btn-outline btn-sm" id="admin-lock" style="display:none;">Lock</button>
+      <button class="btn btn-outline btn-sm" id="admin-lock" style="display:none;">Sign out</button>
       <a href="index.html" class="btn btn-outline btn-sm">Back to site</a>
     </div>
   </div>
@@ -35,14 +35,12 @@
 <main class="wrap" style="padding-top: 2.5rem;">
 
   <div id="admin-gate" class="panel admin-gate">
-    <p class="eyebrow">Admin access</p>
-    <h1 class="display-3" style="margin-top:0.6rem;">Enter the admin key</h1>
-    <p class="lede" style="margin-top:0.6rem; font-size:0.92rem;">This unlocks the list of contact-form requests for this browser session only.</p>
-    <div class="field" style="margin-top:1.3rem;">
+    <h1 class="display-3">Admin Panel</h1>
+    <div class="field" style="margin-top:1.1rem;">
       <label for="admin-key-input">Admin key</label>
       <input type="password" id="admin-key-input" autocomplete="off">
     </div>
-    <button class="btn btn-navy" id="admin-unlock">Unlock</button>
+    <button class="btn btn-navy" id="admin-unlock">Sign in</button>
     <p class="admin-gate-error" id="admin-gate-error"></p>
   </div>
 

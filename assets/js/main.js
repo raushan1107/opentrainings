@@ -18,9 +18,9 @@
     chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v10H9l-4 4V5Z"/></svg>'
   };
   var CB_LINKS = [
-    { href: "tel:+918045126630", icon: "phone", full: "+91 80 4512 6630", short: "Call", cls: "is-primary", attrs: "" },
-    { href: "https://wa.me/918045126630", icon: "whatsapp", full: "WhatsApp", short: "WhatsApp", cls: "", attrs: ' target="_blank" rel="noopener"' },
-    { href: "mailto:register@opentrainings.example", icon: "mail", full: "register@opentrainings.example", short: "Email", cls: "", attrs: "" },
+    { href: "tel:+918679450045", icon: "phone", full: "+91 86 7945 0045", short: "Call", cls: "is-primary", attrs: "" },
+    { href: "https://wa.me/918679450045", icon: "whatsapp", full: "WhatsApp", short: "WhatsApp", cls: "", attrs: ' target="_blank" rel="noopener"' },
+    { href: "mailto:info@opentrainings.org", icon: "mail", full: "info@opentrainings.org", short: "Email", cls: "", attrs: "" },
     { href: "contact.html", icon: "chat", full: "Message Us", short: "Message", cls: "", attrs: "" }
   ];
   document.querySelectorAll("[data-contact-bar]").forEach(function (mount) {
@@ -28,6 +28,27 @@
       return '<a href="' + l.href + '" class="' + l.cls + '"' + l.attrs + '>' + CB_ICONS[l.icon] +
         '<span class="cb-full">' + l.full + '</span><span class="cb-short">' + l.short + '</span></a>';
     }).join("");
+  });
+
+  /* ---------- WhatsApp: floating button (bottom-right) + mobile header
+     icon (placed left of the menu toggle). Injected here rather than
+     duplicated in every HTML file's header markup. ---------- */
+  var WHATSAPP_URL = "https://wa.me/918679450045";
+
+  var fabHolder = document.createElement("div");
+  fabHolder.innerHTML = '<a class="whatsapp-fab" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">' + CB_ICONS.whatsapp + '</a>';
+  document.body.appendChild(fabHolder.firstElementChild);
+
+  document.querySelectorAll("[data-nav-toggle]").forEach(function (toggle) {
+    var holder = document.createElement("div");
+    holder.innerHTML = '<a class="nav-whatsapp" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">' + CB_ICONS.whatsapp + '</a>';
+    var waLink = holder.firstElementChild;
+
+    var group = document.createElement("div");
+    group.className = "nav-mobile-actions";
+    toggle.parentNode.insertBefore(group, toggle);
+    group.appendChild(waLink);
+    group.appendChild(toggle);
   });
 
   /* Every page loads this script last, after its own inline script has
@@ -69,18 +90,7 @@
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---------- top nav search (present on every page, incl. pages with no other inline script) ---------- */
-  document.querySelectorAll("[data-nav-search]").forEach((form) => {
-    if (form.dataset.wired) return;
-    form.dataset.wired = "1";
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const val = form.querySelector("input").value.trim();
-      window.location.href = "programmes.html" + (val ? "?q=" + encodeURIComponent(val) : "");
-    });
-  });
-
-  /* ---------- nav dropdowns (click-to-toggle, for touch as well as hover) ---------- */
+  /* ---------- nav dropdown (click-to-toggle, for touch as well as hover) ---------- */
   document.querySelectorAll(".nav-item > button").forEach((btn) => {
     btn.addEventListener("click", () => {
       const item = btn.closest(".nav-item");

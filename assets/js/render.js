@@ -45,27 +45,14 @@
             <h1 class="display-1">${esc(s.title)}</h1>
             <p class="hero-sub">${esc(s.sub)}</p>
             <p class="hero-stat-line">${esc(s.statLine)}</p>
-            <form class="hero-search" data-hero-search>
-              <input type="text" placeholder="What do you want to learn?" aria-label="Search programmes">
-              <button type="submit">Search</button>
-            </form>
-            <p class="hero-or">or</p>
-            <div class="hero-actions">
-              <a href="programmes.html" class="btn btn-outline btn-sm">Trending Programmes</a>
+            <div class="hero-actions" style="margin-top:1.8rem;">
+              <a href="training.html" class="btn btn-navy">Browse Training</a>
+              <a href="contact.html" class="btn btn-outline">Talk to Us</a>
             </div>
           </div>
         </div>
       </div>
     `).join("") + `<div class="hero-dots">${D.heroSlides.map((s, i) => `<button aria-label="Slide ${i + 1}" class="${i === 0 ? "is-active" : ""}" data-dot="${i}"></button>`).join("")}</div>`;
-
-    const searchForm = el.querySelector("[data-hero-search]");
-    if (searchForm) {
-      searchForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const val = searchForm.querySelector("input").value.trim();
-        window.location.href = "programmes.html" + (val ? "?q=" + encodeURIComponent(val) : "");
-      });
-    }
   }
 
   /* ---------- accreditation / logo strip (continuous scroll) ----------
@@ -108,16 +95,36 @@
     `).join("");
   }
 
-  /* ---------- learning modes ---------- */
-  function renderLearningModes(sel) {
+  /* ---------- labs ---------- */
+  function renderLabs(sel) {
     const el = q(sel);
     if (!el) return;
-    el.innerHTML = D.learningModes.map((m) => `
+    el.innerHTML = D.labs.map((l) => `
       <div class="mode-card reveal">
-        <div class="mode-icon">${icon(m.icon)}</div>
-        <h3>${esc(m.title)}</h3>
-        <p>${esc(m.desc)}</p>
-        <a href="services.html#engagement">See how this works &rarr;</a>
+        <div class="mode-icon">${icon(l.icon)}</div>
+        <h3>${esc(l.title)}</h3>
+        <p>${esc(l.desc)}</p>
+        <span class="tag" style="margin-top:0.9rem; display:inline-block;">${esc(l.bestFor)}</span>
+      </div>
+    `).join("");
+  }
+
+  /* ---------- vouchers ---------- */
+  function renderVouchers(sel) {
+    const el = q(sel);
+    if (!el) return;
+    el.innerHTML = D.vouchers.map((v) => `
+      <div class="course-card reveal">
+        <div class="course-card-top">
+          <span class="course-pill">${esc(v.vendor)}</span><span class="course-pill course-pill--level">${esc(v.level)}</span>
+          <h3>${esc(v.exam)}</h3>
+          <p>${esc(v.code)} &middot; ${esc(v.format)}</p>
+          <div class="course-meta"><span>${esc(v.validity)}</span></div>
+        </div>
+        <div class="course-card-bottom">
+          <span class="course-cohort">Delivered as<br><b>Voucher code</b></span>
+          <a class="btn btn-outline btn-sm" href="contact.html?voucher=${encodeURIComponent(v.exam)}">Request this voucher</a>
+        </div>
       </div>
     `).join("");
   }
@@ -157,16 +164,17 @@
     `).join("");
   }
 
-  /* ---------- engagement ledger ---------- */
-  function renderEngagementLedger(sel) {
+  /* ---------- engagement ledger (also reused for lab engagement models) ---------- */
+  function renderEngagementLedger(sel, list) {
     const el = q(sel);
     if (!el) return;
+    list = list || D.engagementModels;
     el.innerHTML = `
       <thead>
         <tr><th>Model</th><th>Best for</th><th>Format</th><th>Commitment</th></tr>
       </thead>
       <tbody>
-        ${D.engagementModels.map((m) => `
+        ${list.map((m) => `
           <tr>
             <td><strong>${esc(m.name)}</strong></td>
             <td>${esc(m.bestFor)}</td>
@@ -202,7 +210,7 @@
             <p class="eyebrow" style="margin-top:1.4rem;">Module breakdown</p>
             <ul>${p.modules.map((m) => `<li>${esc(m)}</li>`).join("")}</ul>
             <div style="margin-top:1.3rem;">
-              <a class="btn btn-navy btn-sm" href="contact.html?programme=${encodeURIComponent(p.title)}">Request this programme for my team</a>
+              <a class="btn btn-navy btn-sm" href="contact.html?programme=${encodeURIComponent(p.title)}">Request this trainer for my team</a>
             </div>
           </div>
         </div>
@@ -218,7 +226,7 @@
     el.innerHTML = D.programs.slice(0, limit).map(programRow).join("");
   }
 
-  /* filtering used on programmes.html */
+  /* filtering used on training.html */
   function initProgramFilters(rootSel, filterBarSel) {
     const root = q(rootSel);
     if (!root) return;
@@ -282,7 +290,7 @@
         </div>
         <div class="course-card-bottom">
           <span class="course-cohort">Next cohort<br><b>${esc(p.cohort)}</b></span>
-          <a class="btn btn-outline btn-sm" href="programmes.html">View curriculum</a>
+          <a class="btn btn-outline btn-sm" href="training.html">View curriculum</a>
         </div>
       </div>
     `).join("");
@@ -348,28 +356,13 @@
     }, 650 + Math.random() * 400);
   }
 
-  /* ---------- team ---------- */
-  function renderTeam(sel) {
+  /* ---------- FAQ (also reused for voucher FAQ) ---------- */
+  function renderFAQ(sel, list) {
     const el = q(sel);
     if (!el) return;
-    el.innerHTML = D.team.map((t) => `
-      <div class="roster-row reveal">
-        <div class="roster-avatar">${esc(t.initials)}</div>
-        <div class="roster-body">
-          <h3 class="display-4">${esc(t.name)}</h3>
-          <p>${esc(t.role)}</p>
-          <div class="roster-meta"><span class="tag">${esc(t.focus)}</span></div>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  /* ---------- FAQ ---------- */
-  function renderFAQ(sel) {
-    const el = q(sel);
-    if (!el) return;
+    list = list || D.faqs;
     el.setAttribute("data-accordion-solo", "");
-    el.innerHTML = D.faqs.map((f, i) => `
+    el.innerHTML = list.map((f, i) => `
       <div class="accordion-item reveal">
         <button class="accordion-trigger" aria-expanded="false">
           <span class="accordion-trigger-title"><span class="tag">Q${pad(i + 1)}</span> ${esc(f.q)}</span>
@@ -422,9 +415,9 @@
   }
 
   window.OT_RENDER = {
-    renderHero, renderAccreditation, renderStats, renderFeatureGrid, renderLearningModes,
-    renderTestimonials, renderSectorMarquee: function(){}, renderServices, renderEngagementLedger,
+    renderHero, renderAccreditation, renderStats, renderFeatureGrid, renderLabs,
+    renderVouchers, renderTestimonials, renderSectorMarquee: function(){}, renderServices, renderEngagementLedger,
     renderPrograms, initProgramFilters, renderCourseCards, renderCaseStudies, renderInsights,
-    renderTeam, renderFAQ, renderOffices, renderOpenRoles
+    renderFAQ, renderOffices, renderOpenRoles
   };
 })();

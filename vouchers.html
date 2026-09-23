@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.className += " js";</script>
-<title>Insights · Open Trainings</title>
-<meta name="description" content="Field notes from the training floor: compliance retention, agile certification gaps, leadership programme diagnostics, distributed contact centre training, and more.">
+<title>Vouchers · Open Trainings</title>
+<meta name="description" content="Official certification exam vouchers across AWS, Microsoft, Google Cloud, Cisco, CompTIA, PMI and ITIL, procured directly and issued to your team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,12 +22,12 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
       <div class="nav-item">
-        <button type="button">Services <span class="nav-caret">&#9660;</span></button>
+        <button type="button" aria-current="page">Services <span class="nav-caret">&#9660;</span></button>
         <div class="nav-dropdown">
           <a href="training.html">Training (Trainer's)</a>
           <a href="training-infra.html">Training Infra</a>
           <a href="labs.html">Labs</a>
-          <a href="vouchers.html">Vouchers</a>
+          <a href="vouchers.html" aria-current="page">Vouchers</a>
         </div>
       </div>
       <a href="contact.html">Contact</a>
@@ -54,35 +54,57 @@
 <main>
 
   <section class="page-hero">
-    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1544531585-9847b68c8c86?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1600&q=80')"></div>
     <div class="wrap page-hero-inner">
-      <p class="eyebrow reveal">Field notes</p>
-      <h1 class="display-1 reveal">Notes from the training floor</h1>
-      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Short, specific writing from the people who design and deliver these programmes. No syndicated listicles, published roughly twice a month.</p>
+      <p class="eyebrow reveal">Vouchers</p>
+      <h1 class="display-1 reveal">One order, vouchers across six vendors</h1>
+      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Certification exam vouchers procured directly through vendor and authorised-reseller channels, issued straight to your team. No new account per vendor, no marked-up resale.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow reveal">Available now</p>
+      <h2 class="display-2 reveal" style="margin-top:0.8rem;">Certification exam vouchers</h2>
+      <div class="grid grid-3" style="margin-top:2rem;" id="vouchers-grid"></div>
+      <p class="field-note reveal" style="margin-top:1.5rem;">Don't see the exam you need? <a href="contact.html" style="text-decoration:underline;">Ask us</a> — most certification bodies we don't list yet can still be sourced on request.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap two-up" style="align-items:center;">
+      <div>
+        <p class="eyebrow reveal">Pair it with training</p>
+        <h2 class="display-2 reveal" style="margin-top:0.8rem;">Most clients don't buy a voucher alone</h2>
+        <p class="lede reveal" style="margin-top:1rem;">A voucher gets a team to the exam room. A trainer and a lab environment get them ready for it. Most clients book a training programme first and add the voucher once the cohort's assessment score clears the bar.</p>
+        <a href="training.html" class="btn btn-outline reveal" style="margin-top:1.5rem;">Browse matching training programmes</a>
+      </div>
+      <ul class="chev-list reveal">
+        <li>Voucher code issued directly from the vendor or authorised reseller</li>
+        <li>Learner books their own exam slot, at their own pace</li>
+        <li>Bulk orders across multiple vendors on a single purchase order</li>
+        <li>Unused vouchers flagged before expiry, not left to lapse quietly</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow reveal">Questions we get before ordering</p>
+      <h2 class="display-2 reveal" style="margin-top:0.8rem;">Frequently asked</h2>
+      <div id="voucher-faq-list" style="margin-top:2.2rem;"></div>
     </div>
   </section>
 
   <section class="section section--tint">
     <div class="wrap">
-      <div id="insights-list"></div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap two-up" style="align-items:center;">
-      <div>
-        <p class="eyebrow reveal">Briefing list</p>
-        <h2 class="display-2 reveal" style="margin-top:0.8rem;">Field notes, roughly twice a month</h2>
-        <p class="lede reveal" style="margin-top:0.8rem;">No drip campaign. Just the new note, when there is one.</p>
-      </div>
-      <form data-form="newsletter" class="reveal panel">
-        <div class="field">
-          <label for="il-email">Work email</label>
-          <input type="email" id="il-email" placeholder="you@company.com">
+      <div class="cta-band section--navy reveal">
+        <div class="blob blob--amber" style="width:280px; height:280px; top:-100px; right:-60px;"></div>
+        <div style="position:relative; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
+          <h2 class="display-2" style="max-width:20ch;">Need vouchers for more than one vendor?</h2>
+          <a href="contact.html" class="btn btn-white">Request a bulk quote</a>
         </div>
-        <button class="btn btn-navy" type="submit">Join the briefing list</button>
-        <p class="form-status"></p>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -145,7 +167,8 @@
 <script src="assets/js/render.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    OT_RENDER.renderInsights("#insights-list");
+    OT_RENDER.renderVouchers("#vouchers-grid");
+    OT_RENDER.renderFAQ("#voucher-faq-list", OT_DATA.voucherFaqs);
   });
 </script>
 <script src="assets/js/forms.js"></script>

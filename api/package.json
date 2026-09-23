@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@azure/functions": "^4.5.1",
-    "@azure/data-tables": "^13.2.2"
+    "@azure/data-tables": "^13.2.2",
+    "nodemailer": "^6.9.14"
   }
 }

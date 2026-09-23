@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.className += " js";</script>
-<title>Insights · Open Trainings</title>
-<meta name="description" content="Field notes from the training floor: compliance retention, agile certification gaps, leadership programme diagnostics, distributed contact centre training, and more.">
+<title>Labs · Open Trainings</title>
+<meta name="description" content="Hands-on lab environments — cloud sandboxes, a cybersecurity range, data engineering and network labs — bundled with training or booked standalone.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,11 +22,11 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
       <div class="nav-item">
-        <button type="button">Services <span class="nav-caret">&#9660;</span></button>
+        <button type="button" aria-current="page">Services <span class="nav-caret">&#9660;</span></button>
         <div class="nav-dropdown">
           <a href="training.html">Training (Trainer's)</a>
           <a href="training-infra.html">Training Infra</a>
-          <a href="labs.html">Labs</a>
+          <a href="labs.html" aria-current="page">Labs</a>
           <a href="vouchers.html">Vouchers</a>
         </div>
       </div>
@@ -54,35 +54,59 @@
 <main>
 
   <section class="page-hero">
-    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1544531585-9847b68c8c86?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80')"></div>
     <div class="wrap page-hero-inner">
-      <p class="eyebrow reveal">Field notes</p>
-      <h1 class="display-1 reveal">Notes from the training floor</h1>
-      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Short, specific writing from the people who design and deliver these programmes. No syndicated listicles, published roughly twice a month.</p>
+      <p class="eyebrow reveal">Labs</p>
+      <h1 class="display-1 reveal">Practice on a real environment, not a slide</h1>
+      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Four hands-on lab environments, provisioned per cohort and isolated from production, so a technical programme ends with something your team actually did, not just watched.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow reveal">What's available</p>
+      <h2 class="display-2 reveal" style="margin-top:0.8rem;">Four lab environments</h2>
+      <div class="grid grid-4" style="margin-top:2rem;" id="labs-grid"></div>
     </div>
   </section>
 
   <section class="section section--tint">
     <div class="wrap">
-      <div id="insights-list"></div>
+      <p class="eyebrow reveal">How to get lab access</p>
+      <h2 class="display-2 reveal" style="margin-top:0.8rem;">Three ways to book a lab</h2>
+      <p class="lede reveal" style="margin-top:1rem;">Most technical programmes ship with lab access included. Some teams just need practice time on their own.</p>
+      <div class="ledger-wrap reveal" style="margin-top:2.4rem; overflow-x:auto;">
+        <table class="ledger" id="lab-ledger"></table>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap two-up" style="align-items:center;">
       <div>
-        <p class="eyebrow reveal">Briefing list</p>
-        <h2 class="display-2 reveal" style="margin-top:0.8rem;">Field notes, roughly twice a month</h2>
-        <p class="lede reveal" style="margin-top:0.8rem;">No drip campaign. Just the new note, when there is one.</p>
+        <p class="eyebrow reveal">Isolation, by default</p>
+        <h2 class="display-2 reveal" style="margin-top:0.8rem;">Nothing here touches your production systems</h2>
+        <p class="lede reveal" style="margin-top:1rem;">Every environment is provisioned fresh for the cohort and torn down after, so there's no shared state between sessions, no accidental billing on a client account, and nothing left running once the programme ends.</p>
+        <a href="training.html" class="btn btn-outline reveal" style="margin-top:1.5rem;">See which programmes include a lab</a>
       </div>
-      <form data-form="newsletter" class="reveal panel">
-        <div class="field">
-          <label for="il-email">Work email</label>
-          <input type="email" id="il-email" placeholder="you@company.com">
+      <ul class="chev-list reveal">
+        <li>Fresh environment provisioned per cohort, reset after use</li>
+        <li>No connection to any client's production infrastructure</li>
+        <li>Standalone access available without a full programme booking</li>
+        <li>Dedicated environments configurable to a client's own tooling</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="cta-band section--navy reveal">
+        <div class="blob blob--cyan" style="width:300px; height:300px; top:-110px; left:-60px;"></div>
+        <div style="position:relative; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
+          <h2 class="display-2" style="max-width:20ch;">Need practice time without a full programme?</h2>
+          <a href="contact.html" class="btn btn-white">Ask about standalone lab access</a>
         </div>
-        <button class="btn btn-navy" type="submit">Join the briefing list</button>
-        <p class="form-status"></p>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -145,7 +169,8 @@
 <script src="assets/js/render.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    OT_RENDER.renderInsights("#insights-list");
+    OT_RENDER.renderLabs("#labs-grid");
+    OT_RENDER.renderEngagementLedger("#lab-ledger", OT_DATA.labEngagement);
   });
 </script>
 <script src="assets/js/forms.js"></script>

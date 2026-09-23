@@ -150,27 +150,40 @@ em{ font-style: normal; color: var(--blue); }
 .nav-dropdown{
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px);
   background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg);
-  padding: 0.9rem; min-width: 260px;
+  padding: 0.9rem; min-width: 240px;
   opacity: 0; pointer-events: none; transition: opacity .15s ease, transform .15s ease;
 }
 .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{ opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
 .nav-dropdown a{ display: block; padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; }
 .nav-dropdown a:hover{ background: var(--bg-tint); color: var(--blue); }
 
-.nav-search{ display: none; align-items: center; gap: 0.5rem; }
-.nav-search input{
-  width: 190px; border: 1.5px solid var(--line); border-radius: 999px; padding: 0.55em 1.1em; font-size: 0.85rem; background: var(--bg-tint);
-}
-.nav-search input:focus{ outline: none; border-color: var(--blue); background: #fff; }
-.nav-search button{ background: var(--blue); color: #fff; border-radius: 999px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
 .nav-toggle{ border: 1.5px solid var(--line); border-radius: 999px; padding: 0.5em 1em; font-size: 0.78rem; font-weight: 700; }
-.nav-cta{ display: none; flex-shrink: 0; }
+.nav-mobile-actions{ display: flex; align-items: center; gap: 0.6rem; }
+.nav-whatsapp{
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #fff;
+}
+.nav-whatsapp svg{ width: 18px; height: 18px; }
 @media(min-width: 1020px){
   .nav-links{ display: flex; }
-  .nav-search{ display: flex; }
-  .nav-cta{ display: inline-flex; }
   .nav-toggle{ display: none; }
+  .nav-whatsapp{ display: none; }
+}
+
+/* ---------- WhatsApp floating button (bottom-right, above the sticky contact bar) ---------- */
+.whatsapp-fab{
+  position: fixed; right: 20px; bottom: 84px; z-index: 56;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease;
+}
+.whatsapp-fab:hover{ transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.whatsapp-fab svg{ width: 26px; height: 26px; }
+@media(max-width: 860px){
+  .whatsapp-fab{ bottom: 100px; right: 14px; width: 50px; height: 50px; }
+  .whatsapp-fab svg{ width: 22px; height: 22px; }
 }
 
 .mobile-panel{
@@ -216,16 +229,7 @@ em{ font-style: normal; color: var(--blue); }
 .hero h1{ margin-top: 0.9rem; max-width: 14ch; }
 .hero-sub{ margin-top: 1.1rem; color: var(--ink-soft); max-width: 44ch; font-size: 1.05rem; }
 .hero-stat-line{ margin-top: 0.9rem; font-weight: 700; color: var(--navy-deep); font-size: 0.95rem; }
-.hero-search{
-  margin-top: 1.8rem; display: flex; align-items: center; gap: 0.5rem;
-  background: #fff; border: 1.5px solid var(--line); border-radius: 999px; padding: 0.4rem; max-width: 460px;
-  box-shadow: var(--shadow);
-}
-.hero-search input{ flex: 1; min-width: 0; border: none; background: transparent; padding: 0.6em 1em; font-size: 0.92rem; }
-.hero-search input:focus{ outline: none; }
-.hero-search button{ background: var(--blue); color: #fff; border-radius: 999px; padding: 0.75em 1.6em; font-weight: 700; font-size: 0.88rem; flex-shrink: 0; }
-.hero-or{ text-align: center; margin: 0.9rem 0; font-size: 0.82rem; color: var(--ink-faint); }
-.hero-actions{ display: flex; justify-content: flex-start; }
+.hero-actions{ display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: flex-start; }
 
 .hero-dots{ position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 2; }
 .hero-dots button{ width: 9px; height: 9px; border-radius: 50%; background: var(--line); transition: all .2s ease; }
@@ -251,7 +255,6 @@ em{ font-style: normal; color: var(--blue); }
   .hero-content{ max-width: none; width: 100%; text-align: center; margin-inline: auto; }
   .hero h1{ max-width: none; margin-inline: auto; }
   .hero-sub{ max-width: 40ch; margin-inline: auto; }
-  .hero-search{ max-width: none; width: 100%; }
   .hero-actions{ justify-content: center; }
   .hero-slide-bg::after{
     background: linear-gradient(180deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.93) 55%, rgba(255,255,255,0.86) 100%);
@@ -399,6 +402,9 @@ em{ font-style: normal; color: var(--blue); }
 .field-error{ display: none; font-size: 0.78rem; color: #d1451c; margin-top: 0.45rem; font-weight: 600; }
 .field.has-error .field-error{ display: block; }
 .field-note{ font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.4rem; }
+.req{ color: #d1451c; margin-left: 0.1em; }
+.field-checkbox{ display: flex; align-items: center; gap: 0.55em; font-weight: 600; font-size: 0.85rem; color: var(--navy-deep); margin-bottom: 0.9rem; cursor: pointer; }
+.field-checkbox input{ width: auto; accent-color: var(--blue); }
 .form-status{ margin-top: 1.2rem; padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); display: none; font-size: 0.85rem; font-weight: 600; }
 .form-status.is-visible{ display: block; }
 .form-status.is-success{ background: #e9f9ef; color: #16793f; }

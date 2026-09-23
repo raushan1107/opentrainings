@@ -3,6 +3,12 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "node",
-    "AZURE_STORAGE_CONNECTION_STRING": "<connection string of the Storage Account that will hold ContactRequests / Subscribers tables>"
+    "AZURE_STORAGE_CONNECTION_STRING": "<connection string of the Storage Account that will hold ContactRequests / Subscribers tables>",
+    "ADMIN_KEY": "<password used to unlock admin.html>",
+    "SMTP_HOST": "<e.g. smtp.gmail.com, or your provider's SMTP relay -- optional, omit to skip confirmation emails>",
+    "SMTP_PORT": "587",
+    "SMTP_USER": "<SMTP account username>",
+    "SMTP_PASS": "<SMTP account password or app password>",
+    "SMTP_FROM": "\"Open Trainings\" <info@opentrainings.org>"
   }
 }

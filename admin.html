@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · Open Trainings</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .admin-table th, .admin-table td{ vertical-align: top; }
+  .admin-topbar{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .admin-actions{ display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .admin-gate{ max-width: 420px; margin: 4rem auto; }
+  .admin-gate-error{ color: #d1451c; font-size: 0.85rem; font-weight: 600; margin-top: 0.7rem; min-height: 1.2em; }
+</style>
+</head>
+<body style="padding-bottom: 2rem;">
+
+<header class="site-header" style="position: static;">
+  <div class="wrap admin-topbar" style="padding: 0.85rem 0;">
+    <a href="index.html" class="wordmark">
+      <span class="wordmark-badge">OT</span>
+      <span class="wordmark-text">Open Trainings<small>Admin</small></span>
+    </a>
+    <div class="admin-actions">
+      <span class="tag" id="admin-count" style="display:none;"></span>
+      <button class="btn btn-outline btn-sm" id="admin-refresh" style="display:none;">Refresh</button>
+      <button class="btn btn-outline btn-sm" id="admin-lock" style="display:none;">Lock</button>
+      <a href="index.html" class="btn btn-outline btn-sm">Back to site</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top: 2.5rem;">
+
+  <div id="admin-gate" class="panel admin-gate">
+    <p class="eyebrow">Admin access</p>
+    <h1 class="display-3" style="margin-top:0.6rem;">Enter the admin key</h1>
+    <p class="lede" style="margin-top:0.6rem; font-size:0.92rem;">This unlocks the list of contact-form requests for this browser session only.</p>
+    <div class="field" style="margin-top:1.3rem;">
+      <label for="admin-key-input">Admin key</label>
+      <input type="password" id="admin-key-input" autocomplete="off">
+    </div>
+    <button class="btn btn-navy" id="admin-unlock">Unlock</button>
+    <p class="admin-gate-error" id="admin-gate-error"></p>
+  </div>
+
+  <div id="admin-content" style="display:none;">
+    <div class="two-up" style="align-items:end; margin-bottom:1.2rem;">
+      <div>
+        <p class="eyebrow">Contact requests</p>
+        <h1 class="display-2" style="margin-top:0.6rem;">Everyone who's filled the intake form</h1>
+      </div>
+      <div class="field" style="margin:0;">
+        <label for="admin-search">Search</label>
+        <input type="text" id="admin-search" placeholder="Name, company, email, phone, message...">
+      </div>
+    </div>
+
+    <p id="admin-empty" style="display:none; color:var(--ink-soft); padding:2rem 0;">No requests logged yet.</p>
+
+    <div class="ledger-wrap" style="overflow-x:auto;">
+      <table class="ledger admin-table">
+        <thead>
+          <tr>
+            <th>Date &amp; ref.</th>
+            <th>Name &amp; company</th>
+            <th>Contact</th>
+            <th>Team size</th>
+            <th>Need &amp; programme</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody id="admin-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY_STORAGE = "ot_admin_key";
+
+  var gate = document.getElementById("admin-gate");
+  var content = document.getElementById("admin-content");
+  var keyInput = document.getElementById("admin-key-input");
+  var gateError = document.getElementById("admin-gate-error");
+  var unlockBtn = document.getElementById("admin-unlock");
+  var lockBtn = document.getElementById("admin-lock");
+  var refreshBtn = document.getElementById("admin-refresh");
+  var countTag = document.getElementById("admin-count");
+  var searchInput = document.getElementById("admin-search");
+  var tbody = document.getElementById("admin-tbody");
+  var emptyNote = document.getElementById("admin-empty");
+
+  var allItems = [];
+
+  function digits(s) { return String(s || "").replace(/\D/g, ""); }
+  function esc(s) {
+    return String(s || "").replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d)) return iso;
+    return d.toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  }
+
+  function renderRows(items) {
+    if (!items.length) {
+      tbody.innerHTML = "";
+      emptyNote.style.display = "block";
+      return;
+    }
+    emptyNote.style.display = "none";
+    tbody.innerHTML = items.map(function (it) {
+      var wa = digits(it.whatsapp || it.phone);
+      return (
+        "<tr>" +
+        "<td>" + esc(fmtDate(it.submittedAt)) + "<br><span style=\"color:var(--ink-faint); font-size:0.76rem;\">" + esc(it.reference) + "</span></td>" +
+        "<td><strong>" + esc(it.name) + "</strong>" + (it.company ? "<br>" + esc(it.company) : "") + "</td>" +
+        "<td>" +
+          (it.phone ? "<a href=\"tel:" + esc(it.phone) + "\">" + esc(it.phone) + "</a><br>" : "") +
+          (wa ? "<a href=\"https://wa.me/" + wa + "\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> &middot; " : "") +
+          "<a href=\"mailto:" + esc(it.email) + "\">" + esc(it.email) + "</a>" +
+          (it.preferredContact ? "<br><span class=\"tag\">Prefers " + esc(it.preferredContact) + "</span>" : "") +
+        "</td>" +
+        "<td>" + esc(it.teamSize) + "</td>" +
+        "<td>" + (it.need ? "<span class=\"tag\">" + esc(it.need) + "</span>" : "") + (it.programme ? "<br>" + esc(it.programme) : "") + "</td>" +
+        "<td style=\"max-width:320px;\">" + esc(it.message) + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+  }
+
+  function applySearch() {
+    var q = (searchInput.value || "").trim().toLowerCase();
+    var filtered = !q ? allItems : allItems.filter(function (it) {
+      return [it.name, it.company, it.email, it.phone, it.whatsapp, it.message, it.programme, it.need]
+        .join(" ").toLowerCase().indexOf(q) !== -1;
+    });
+    renderRows(filtered);
+    countTag.textContent = q ? (filtered.length + " of " + allItems.length) : (allItems.length + " request" + (allItems.length === 1 ? "" : "s"));
+  }
+
+  function unlockUI() {
+    gate.style.display = "none";
+    content.style.display = "block";
+    lockBtn.style.display = "inline-flex";
+    refreshBtn.style.display = "inline-flex";
+    countTag.style.display = "inline-flex";
+  }
+
+  function lockUI() {
+    content.style.display = "none";
+    lockBtn.style.display = "none";
+    refreshBtn.style.display = "none";
+    countTag.style.display = "none";
+    gate.style.display = "block";
+  }
+
+  function load(key) {
+    gateError.textContent = "";
+    return fetch("/api/admin/contacts", { headers: { "x-admin-key": key } })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          if (!res.ok) throw new Error(data.error || "Could not load submissions.");
+          return data;
+        });
+      })
+      .then(function (data) {
+        allItems = data.items || [];
+        sessionStorage.setItem(KEY_STORAGE, key);
+        unlockUI();
+        applySearch();
+      })
+      .catch(function (err) {
+        sessionStorage.removeItem(KEY_STORAGE);
+        gateError.textContent = err.message || "Could not reach the server. Please try again.";
+      });
+  }
+
+  unlockBtn.addEventListener("click", function () {
+    var key = keyInput.value.trim();
+    if (!key) { gateError.textContent = "Enter the admin key."; return; }
+    load(key);
+  });
+  keyInput.addEventListener("keydown", function (e) { if (e.key === "Enter") unlockBtn.click(); });
+
+  lockBtn.addEventListener("click", function () {
+    sessionStorage.removeItem(KEY_STORAGE);
+    keyInput.value = "";
+    lockUI();
+  });
+
+  refreshBtn.addEventListener("click", function () {
+    var key = sessionStorage.getItem(KEY_STORAGE);
+    if (key) load(key);
+  });
+
+  searchInput.addEventListener("input", applySearch);
+
+  var savedKey = sessionStorage.getItem(KEY_STORAGE);
+  if (savedKey) {
+    keyInput.value = savedKey;
+    load(savedKey);
+  }
+})();
+</script>
+</body>
+</html>

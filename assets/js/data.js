@@ -10,95 +10,182 @@ window.OT_DATA = {
   heroSlides: [
     {
       eyebrow: "Open Trainings",
-      title: "Training That Shows Up As Results",
-      sub: "Corporate programmes across cloud, compliance, leadership and customer operations, built around what your teams actually need to do differently.",
-      statLine: "1,140+ cohorts delivered across 14 countries since 2015",
+      title: "Trainers, Labs and Vouchers, In One Place",
+      sub: "We supply expert corporate trainers, hands-on lab environments and official certification exam vouchers, so a programme ends in real practice and a recognised credential, not just a slide deck.",
+      statLine: "1,140+ trainer-led cohorts delivered across 14 countries since 2015",
       image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     },
     {
-      eyebrow: "Measured, Not Assumed",
-      title: "Measure Growth, Not Just Attendance",
-      sub: "Every cohort runs a baseline assessment before day one and a scored evaluation after, so the lift is a number, not a feeling.",
-      statLine: "+31% average lift in post-programme assessment scores",
+      eyebrow: "Practice, Not Just Theory",
+      title: "Hands-On Labs Bundled With Every Technical Track",
+      sub: "Cloud sandboxes, a cybersecurity range and data pipelines your team can break safely, spun up for the cohort and reset after every session.",
+      statLine: "4 lab environments, ready in minutes, isolated from production",
       image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80"
     },
     {
-      eyebrow: "Technical & Digital",
-      title: "Cloud, Data and AI Skills Teams Can Actually Use",
-      sub: "Hands-on tracks for existing technical staff, built to take a team from following a runbook to owning the system.",
-      statLine: "3 technical tracks, from foundation to advanced practitioner",
+      eyebrow: "Trainers Who Still Do The Work",
+      title: "Facilitators With Years In The Field They Teach",
+      sub: "Every trainer we place has hands-on practice in the subject first, and a delivery track record second. We check both before the first cohort.",
+      statLine: "3-plus years of industry experience required of every trainer we place",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80"
     },
     {
-      eyebrow: "Compliance & Leadership",
-      title: "Built Around Your Delivery Calendar",
-      sub: "Open enrollment cohorts, private in-house programmes, or an ongoing learning partnership, scheduled around shift patterns and audit deadlines.",
-      statLine: "3 engagement models, from a single cohort to a year-round partnership",
+      eyebrow: "Certification, Sorted",
+      title: "Official Exam Vouchers, Procured For You",
+      sub: "One purchase order, vouchers across AWS, Microsoft, Cisco, CompTIA, PMI and more, so your L&D team isn't opening six vendor accounts to get a team certified.",
+      statLine: "11+ certification vouchers available across 6 vendors",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80"
     }
   ],
 
   accreditation: [
-    "ISO 21001:2018 ALIGNED", "REGIONAL SKILLS BOARD RECOGNISED", "DATA PROTECTION INSTITUTE PARTNER",
-    "NATIONAL L&D FORUM MEMBER", "QUALITY TRAINING ALLIANCE", "WORKFORCE STANDARDS COUNCIL"
+    "AWS TRAINING PARTNER", "MICROSOFT LEARNING PARTNER", "CISCO LEARNING NETWORK PARTNER",
+    "COMPTIA AUTHORISED PARTNER", "PMI AUTHORISED TRAINING PARTNER", "GOOGLE CLOUD PARTNER NETWORK"
   ],
 
   featureGrid: [
-    { title: "Diagnostic before every proposal", desc: "No curriculum is quoted until we understand what the workforce needs to do differently." },
-    { title: "Facilitators who've worked the field", desc: "Technical and compliance facilitators have three-plus years in the industry they teach." },
-    { title: "Baseline and post-programme scoring", desc: "Every cohort is assessed before and after, so the lift is measured, not assumed." },
+    { title: "Trainers vetted before they're placed", desc: "Every facilitator has three-plus years working in the field they teach, checked before the first session, not after a complaint." },
+    { title: "A working lab with every technical track", desc: "Cloud, security and data programmes ship with a live sandbox environment your team can break safely and reset." },
+    { title: "Vouchers procured, not resold", desc: "Certification exam vouchers are bought directly through vendor and authorised-partner channels at corporate volume." },
+    { title: "One desk for trainers, labs and vouchers", desc: "A single regional contact coordinates all three services, so booking a cohort and its exam vouchers is one conversation." },
     { title: "Recorded session access", desc: "Live online cohorts are recorded and shared with enrolled learners for a full quarter." },
-    { title: "Ninety-day support window", desc: "Learners can bring follow-up questions back to their facilitator for three months." },
+    { title: "Ninety-day support window", desc: "Learners can bring follow-up questions back to their trainer for three months after the last session." },
     { title: "Train-the-trainer handover", desc: "Certify a client's own staff to run future cohorts, with a shadow-teach cycle built in." },
-    { title: "Three regional delivery hubs", desc: "Bangalore, Dubai and Nairobi, with travel-based delivery extending well beyond." },
-    { title: "A cohort report as standard", desc: "Assessment results and attendance go back to the sponsoring team without being asked." },
-    { title: "Scheduling around your calendar", desc: "Private in-house cohorts are timed to shift patterns, audit deadlines and go-live dates." }
+    { title: "Three regional delivery hubs", desc: "Noida, Dubai and Nairobi, with travel-based delivery extending well beyond." },
+    { title: "Scheduling around your calendar", desc: "Private in-house cohorts, lab access windows and voucher batches are all timed to your shift patterns and deadlines." }
   ],
 
-  learningModes: [
+  labs: [
     {
-      title: "In-Person Cohort",
-      desc: "Instructor-led delivery at a client site or one of our regional training rooms, for teams that learn best in a room together.",
-      icon: "person"
+      title: "Cloud Sandbox Labs",
+      desc: "Pre-built AWS, Azure and Google Cloud environments for hands-on practice, reset after every session so nobody worries about a stray bill.",
+      bestFor: "Best for cloud fundamentals & SRE tracks",
+      icon: "globe"
     },
     {
-      title: "Live Online",
-      desc: "The same instructor-led curriculum delivered over video for distributed teams, recorded for later reference.",
+      title: "Cybersecurity Range",
+      desc: "An isolated network range for attack-and-defend exercises, fully separated from any client's production systems.",
+      bestFor: "Best for security & compliance tracks",
+      icon: "badge"
+    },
+    {
+      title: "Data Engineering Sandbox",
+      desc: "A working pipeline and warehouse environment for practicing real data-engineering exercises, not a static spreadsheet exercise.",
+      bestFor: "Best for data & analytics tracks",
       icon: "screen"
     },
     {
-      title: "Private In-House",
-      desc: "A programme delivered exclusively for one organisation, content adapted to internal systems and case studies.",
+      title: "Network & Systems Lab",
+      desc: "Virtualised routers, switches and servers for CCNA-style and systems-administration practice without touching real infrastructure.",
+      bestFor: "Best for network & infrastructure tracks",
       icon: "building"
+    }
+  ],
+
+  trainingInfraOptions: [
+    {
+      name: "Client-Site Room, Arranged by Us",
+      bestFor: "Organisations training on their own premises",
+      format: "We fit out an existing room (seating, projector/screen, whiteboards, Wi-Fi) and coordinate meals and any trainer travel needed to get there",
+      commitment: "Booked per session, walkthrough done 48 hours before day one"
     },
     {
-      title: "Train-the-Trainer",
-      desc: "Certification and a shadow-teach cycle so a client's own senior staff can deliver future cohorts.",
-      icon: "badge"
+      name: "Our Regional Training Room",
+      bestFor: "Teams without a suitable space of their own",
+      format: "A ready classroom at our Noida hub, seated and AV-checked, with lab network access and a workspace desk if the trainer needs to stay on afterward",
+      commitment: "Included in the programme price for in-person cohorts booked there"
+    },
+    {
+      name: "Off-Site Venue (Hotel or Conference Space)",
+      bestFor: "Larger cohorts, multi-day residentials, or out-of-town attendees",
+      format: "We source and fit out an external venue and coordinate the full loop around it: AV rental, seating, catering, and travel and stay for trainers or attendees flying in",
+      commitment: "Quoted per engagement once headcount and dates are confirmed"
+    }
+  ],
+
+  labEngagement: [
+    {
+      name: "Bundled With a Training Programme",
+      bestFor: "Any cohort in a technical track (cloud, security, data, networking)",
+      format: "Lab access opens the morning of day one and stays live through the programme",
+      commitment: "Included in the programme price, no separate booking"
+    },
+    {
+      name: "Standalone Practice Access",
+      bestFor: "Teams that already trained elsewhere and just need practice time",
+      format: "Self-paced access to a sandbox environment for a fixed window",
+      commitment: "Booked per seat, per environment, typically 2-4 week windows"
+    },
+    {
+      name: "Dedicated Cohort Environment",
+      bestFor: "Private in-house programmes needing client-specific data or systems",
+      format: "A ring-fenced environment configured to the client's own tooling",
+      commitment: "Set up per engagement, timeline agreed at the diagnostic call"
+    }
+  ],
+
+  vouchers: [
+    { vendor: "AWS", exam: "AWS Certified Cloud Practitioner", code: "CLF-C02", level: "Foundational", format: "Online proctored or test centre", validity: "Voucher valid 12 months from issue" },
+    { vendor: "AWS", exam: "AWS Certified Solutions Architect – Associate", code: "SAA-C03", level: "Associate", format: "Online proctored or test centre", validity: "Voucher valid 12 months from issue" },
+    { vendor: "Microsoft", exam: "Microsoft Certified: Azure Fundamentals", code: "AZ-900", level: "Foundational", format: "Online proctored or test centre", validity: "Voucher valid 6 months from issue" },
+    { vendor: "Microsoft", exam: "Microsoft Certified: Azure Administrator Associate", code: "AZ-104", level: "Associate", format: "Online proctored or test centre", validity: "Voucher valid 6 months from issue" },
+    { vendor: "Google Cloud", exam: "Associate Cloud Engineer", code: "ACE", level: "Associate", format: "Online proctored or test centre", validity: "Voucher valid 12 months from issue" },
+    { vendor: "Cisco", exam: "Cisco Certified Network Associate", code: "CCNA 200-301", level: "Associate", format: "Test centre (Pearson VUE)", validity: "Voucher valid 12 months from issue" },
+    { vendor: "CompTIA", exam: "CompTIA Security+", code: "SY0-701", level: "Foundational", format: "Test centre or online proctored", validity: "Voucher valid 12 months from issue" },
+    { vendor: "CompTIA", exam: "CompTIA Network+", code: "N10-009", level: "Foundational", format: "Test centre or online proctored", validity: "Voucher valid 12 months from issue" },
+    { vendor: "PMI", exam: "Project Management Professional", code: "PMP", level: "Professional", format: "Test centre or online proctored", validity: "Voucher valid 12 months from issue" },
+    { vendor: "PMI", exam: "Certified Associate in Project Management", code: "CAPM", level: "Foundational", format: "Test centre or online proctored", validity: "Voucher valid 12 months from issue" },
+    { vendor: "Axelos", exam: "ITIL 4 Foundation", code: "ITIL4F", level: "Foundational", format: "Online proctored or test centre", validity: "Voucher valid 12 months from issue" }
+  ],
+
+  voucherFaqs: [
+    {
+      q: "How does voucher redemption actually work?",
+      a: [
+        "We issue a voucher code directly from the vendor or their authorised reseller once payment clears. The learner books their own exam slot with that code, at a test centre or online-proctored, on their own schedule."
+      ]
+    },
+    {
+      q: "What happens if a voucher expires unused?",
+      a: [
+        "Vendor expiry terms apply, typically 6 to 12 months depending on the certification body. We flag unused vouchers to the sponsoring L&D contact a month before expiry so they aren't wasted."
+      ]
+    },
+    {
+      q: "Can vouchers be bought without booking a training programme?",
+      a: [
+        "Yes. Vouchers are sold standalone for teams that only need the exam covered, though most clients pair them with a training programme or a lab session first."
+      ]
+    },
+    {
+      q: "Do you offer refunds on unused vouchers?",
+      a: [
+        "Refund terms follow the issuing vendor's own policy, which we pass through unchanged. Most certification bodies do not refund an issued voucher, only exchange or extend it in limited circumstances. Full detail is in our Terms of Service."
+      ]
     }
   ],
 
   testimonials: [
     {
-      quote: "The diagnostic call alone reshaped our brief. What we asked for at the start wasn't what we needed, and they were upfront about that before a single slide was built.",
+      quote: "The trainer they placed had actually run the systems we use, not just taught about them. That's rarer than it should be.",
       role: "Head of L&D",
       sector: "Regional Banking Group",
       initials: "HL"
     },
     {
-      quote: "Cohort reports land in our inbox without us having to chase them. For a compliance refresh across 900 staff, that reporting discipline was the whole point.",
+      quote: "Vouchers for four different vendors landed through one order instead of four separate accounts. That alone was worth the contract.",
       role: "Compliance Programme Owner",
       sector: "Public-Sector Utility",
       initials: "CP"
     },
     {
-      quote: "Our senior engineers came out of the train-the-trainer track able to run the next cohort themselves. That was the actual deliverable we cared about.",
+      quote: "Our engineers practiced in the lab environment before touching anything real. Nobody broke production during the rollout.",
       role: "VP Engineering",
       sector: "Logistics Technology Team",
       initials: "VE"
     },
     {
-      quote: "Three regions, one standard. That's harder to pull off than it sounds, and it's the reason we kept the contract past the first year.",
+      quote: "Three regions, one standard of trainer, the same lab setup everywhere. That consistency is harder to buy than it sounds.",
       role: "Regional HR Director",
       sector: "Retail Operations Group",
       initials: "RH"
@@ -109,7 +196,7 @@ window.OT_DATA = {
     { num: "1,140+", label: "Cohorts delivered since 2015" },
     { num: "38,600+", label: "Learners trained to completion" },
     { num: "14", label: "Countries with active delivery" },
-    { num: "+31%", label: "Avg. lift in post-programme assessment scores" }
+    { num: "2,400+", label: "Certification vouchers procured for client teams" }
   ],
 
   sectors: [
@@ -120,33 +207,33 @@ window.OT_DATA = {
 
   services: [
     {
-      title: "Corporate Training Design",
-      summary: "We build curriculum around a client's actual tools, systems and workflows, starting from a diagnostic of what the workforce needs to do differently, not a generic slide deck pulled off a shelf.",
-      meta: ["Custom curriculum", "Needs diagnostic", "4-10 week build"]
+      title: "Trainer Sourcing & Vetting",
+      summary: "We source facilitators with three-plus years of hands-on experience in the subject they'll teach, and match them to a client's brief before quoting a delivery date.",
+      meta: ["Vetted facilitators", "Skills-matched", "2-3 week sourcing"]
     },
     {
-      title: "Classroom & Live Online Delivery",
-      summary: "Instructor-led cohorts run in person at a client site, at one of our regional training rooms, or live over video for distributed teams, scheduled around shift patterns and operational calendars.",
+      title: "Programme Scheduling & Delivery",
+      summary: "Instructor-led cohorts run in person at a client site, at one of our regional training rooms, or live over video, scheduled around shift patterns and operational calendars.",
       meta: ["Instructor-led", "In-person or live remote", "Scheduled cohorts"]
     },
     {
-      title: "Technical & Digital Upskilling",
-      summary: "Structured tracks for existing technical staff across cloud platforms, data tooling, automation and applied AI, built to bring a team from 'can follow a runbook' to 'can own the system'.",
-      meta: ["Cloud & data", "Hands-on labs", "Practitioner level"]
+      title: "Lab Environment Provisioning",
+      summary: "Cloud sandboxes, a cybersecurity range, data pipelines and virtualised networking labs are provisioned per cohort and torn down after, isolated from any client's production systems.",
+      meta: ["Cloud & security labs", "Provisioned per cohort", "Reset after use"]
+    },
+    {
+      title: "Certification Voucher Procurement",
+      summary: "Exam vouchers across AWS, Microsoft, Google Cloud, Cisco, CompTIA and PMI are bought directly through vendor and authorised-reseller channels and issued to your team.",
+      meta: ["Direct vendor sourcing", "Single purchase order", "Multi-vendor coverage"]
     },
     {
       title: "Train-the-Trainer & Capability Transfer",
-      summary: "We certify a client's own senior staff to deliver the second and third cohorts themselves, with facilitation guides, assessment banks and a shadow-teach cycle before handover.",
+      summary: "We certify a client's own senior staff to deliver the second and third cohorts themselves, with facilitation guides and a shadow-teach cycle before handover.",
       meta: ["Internal capacity", "Facilitator certification", "Shadow-teach model"]
     },
     {
-      title: "Assessment, Certification & Reporting",
-      summary: "Every cohort runs a pre-assessment baseline and a post-programme evaluation, with a completion certificate issued per learner and a cohort-level report sent back to the sponsoring L&D or HR team.",
-      meta: ["Pre/post scoring", "Completion certificates", "Cohort reporting"]
-    },
-    {
       title: "Learning Operations Consulting",
-      summary: "For L&D teams building out a training function, we advise on LMS selection and rollout, annual training calendars, vendor coordination and budget planning, without pushing our own delivery as the answer.",
+      summary: "For L&D teams building out a training function, we advise on LMS selection, annual training calendars, vendor coordination and budget planning, without pushing our own delivery as the answer.",
       meta: ["LMS rollout", "Annual planning", "Vendor coordination"]
     }
   ],
@@ -156,7 +243,7 @@ window.OT_DATA = {
       name: "Open Enrollment Cohort",
       bestFor: "Individual employees or small teams joining a scheduled public cohort",
       format: "In-person or live online, mixed-organisation classroom",
-      commitment: "Per-seat registration, fixed calendar published on the Programmes page"
+      commitment: "Per-seat registration, fixed calendar published on the Training page"
     },
     {
       name: "Private In-House Programme",
@@ -376,7 +463,7 @@ window.OT_DATA = {
       size: "340 branch and contact-centre staff",
       challenge: "A new digital onboarding process was live, but branch staff were falling back on the old paper workflow under pressure, and first-line managers had no structured way to coach the new behaviour.",
       approach: [
-        "Ran Frontline Leadership and a customised digital-onboarding module across four regional cohorts",
+        "Placed trainers for Frontline Leadership and a customised digital-onboarding module across four regional cohorts",
         "Built a manager coaching checklist tied to real onboarding metrics",
         "Delivered a train-the-trainer track so regional leads could run future refreshers"
       ],
@@ -393,7 +480,7 @@ window.OT_DATA = {
       size: "60 infrastructure and platform engineers",
       challenge: "Route-planning systems had grown into a patchwork of services with no shared incident process, and outages during peak season were being handled ad hoc by whoever was online.",
       approach: [
-        "Delivered Site Reliability & Incident Response to three engineering pods",
+        "Placed a trainer for Site Reliability & Incident Response across three engineering pods, using a dedicated lab environment mirroring the client's own stack",
         "Co-designed an on-call rotation and severity matrix with the client's platform lead",
         "Ran a live tabletop simulation during a scheduled low-traffic window"
       ],
@@ -473,11 +560,11 @@ window.OT_DATA = {
       excerpt: "Certification pass rates and delivery outcomes are not the same metric. Notes from redesigning an agile programme around a team's actual backlog instead of a generic case study."
     },
     {
-      title: "What we ask before agreeing to build a leadership programme",
+      title: "What we ask before placing a trainer for a leadership programme",
       category: "Leadership & People",
       date: "9 Aug 2026",
       readTime: "5 min",
-      excerpt: "Most requests for a leadership programme are really a request to fix a specific manager problem. The diagnostic questions we run before writing a single slide."
+      excerpt: "Most requests for a leadership programme are really a request to fix a specific manager problem. The diagnostic questions we run before matching a trainer."
     },
     {
       title: "Training a distributed contact centre without losing consistency",
@@ -494,29 +581,20 @@ window.OT_DATA = {
       excerpt: "A short field guide to the questions worth asking a vendor before signing, built from the same material we use in the Machine Learning for Business Analysts programme."
     },
     {
-      title: "The on-call rotation nobody wants to own",
+      title: "Why we bought the lab environment instead of renting one per cohort",
       category: "Cloud & Infrastructure",
       date: "30 Jun 2026",
       readTime: "5 min",
-      excerpt: "Most incident response training focuses on the outage. The harder problem is usually the rotation itself, and who is willing to carry the pager next quarter."
+      excerpt: "Spinning up a fresh sandbox for every cohort used to take a day of setup. Here's what changed once lab provisioning became its own internal service instead of an afterthought."
     }
-  ],
-
-  team: [
-    { initials: "RN", name: "Radhika Nair", role: "Head of Programme Design", focus: "Curriculum architecture, assessment design" },
-    { initials: "TO", name: "Tomiwa Okafor", role: "Director of Regional Delivery", focus: "Cohort operations across EMEA and South Asia" },
-    { initials: "SL", name: "Sanna Laine", role: "Lead, Technical Upskilling", focus: "Cloud, data and applied AI tracks" },
-    { initials: "MV", name: "Marco Villanueva", role: "Lead, Leadership & People", focus: "Manager development, change programmes" },
-    { initials: "AH", name: "Ayesha Haque", role: "Compliance Programme Manager", focus: "Regulatory training and audit reporting" },
-    { initials: "DK", name: "Daniel Kessler", role: "Learning Data Analyst", focus: "Assessment analytics, cohort reporting" }
   ],
 
   faqs: [
     {
-      q: "How is a programme different from a generic off-the-shelf course?",
+      q: "How is a trainer matched to our team, rather than just assigned?",
       a: [
         "Every engagement starts with a short diagnostic call and, for programmes over 20 seats, a review of real workflows, tickets or case material from the client.",
-        "Course content, examples and assessment questions are then built or adapted around that material before the first cohort runs."
+        "We then match a trainer whose own field experience fits that material, and content, examples and lab exercises are built or adapted around it before the first cohort runs."
       ]
     },
     {
@@ -552,16 +630,14 @@ window.OT_DATA = {
   ],
 
   offices: [
-    { city: "Bangalore", role: "Headquarters & programme design studio", address: "4th Floor, Kariappa Block, Indiranagar, Bangalore 560038, India", phone: "+91 80 4512 6630" },
-    { city: "Dubai", role: "MENA regional delivery desk", address: "Office 1102, Churchill Tower, Business Bay, Dubai, UAE", phone: "+971 4 552 1187" },
-    { city: "Nairobi", role: "East Africa regional delivery desk", address: "3rd Floor, Kilimani Business Centre, Nairobi, Kenya", phone: "+254 20 445 0091" }
+    { city: "Noida", role: "Headquarters & trainer network desk", address: "D-block, Sector 16B, Noida 201301, India", phone: "+91 8679450045" }
   ],
 
   openRoles: [
-    { title: "Programme Design Lead, Data & Analytics", location: "Bangalore", type: "Full-time" },
+    { title: "Trainer Network Lead, Data & Analytics", location: "Noida", type: "Full-time" },
     { title: "Regional Delivery Trainer", location: "Dubai", type: "Full-time" },
     { title: "Regional Delivery Trainer", location: "Nairobi", type: "Full-time" },
-    { title: "Learning Data Analyst", location: "Bangalore", type: "Full-time" },
+    { title: "Learning Data Analyst", location: "Noida", type: "Full-time" },
     { title: "Client Partnerships Associate", location: "Remote, EMEA time zones", type: "Full-time" }
   ]
 

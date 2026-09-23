@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.className += " js";</script>
-<title>Programme Catalogue · Open Trainings</title>
-<meta name="description" content="Twelve training programmes across cloud and infrastructure, data and analytics, leadership, compliance, software delivery and customer operations tracks.">
+<title>Training · Open Trainings</title>
+<meta name="description" content="Twelve trainer-led programmes across cloud and infrastructure, data and analytics, leadership, compliance, software delivery and customer operations tracks.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -25,29 +25,18 @@
       <span class="wordmark-text">Open Trainings<small>Infinite Upskilling</small></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
       <div class="nav-item">
-        <button type="button" aria-current="page">Programmes <span class="nav-caret">&#9660;</span></button>
+        <button type="button" aria-current="page">Services <span class="nav-caret">&#9660;</span></button>
         <div class="nav-dropdown">
-          <a href="programmes.html">All Programmes</a>
-          <a href="programmes.html?q=cloud">Cloud &amp; Infrastructure</a>
-          <a href="programmes.html?q=data">Data &amp; Analytics</a>
-          <a href="programmes.html?q=leadership">Leadership &amp; People</a>
-          <a href="programmes.html?q=compliance">Compliance &amp; Risk</a>
-          <a href="programmes.html?q=delivery">Software Delivery</a>
-          <a href="programmes.html?q=customer">Customer Operations</a>
+          <a href="training.html" aria-current="page">Training (Trainer's)</a>
+          <a href="training-infra.html">Training Infra</a>
+          <a href="labs.html">Labs</a>
+          <a href="vouchers.html">Vouchers</a>
         </div>
       </div>
-      <a href="services.html">Services</a>
-      <a href="work.html">Work</a>
-      <a href="about.html">About Us</a>
-      <a href="careers.html">Careers</a>
-      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <form class="nav-search" data-nav-search>
-      <input type="text" placeholder="Search programmes" aria-label="Search programmes">
-      <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
-    </form>
-    <a href="contact.html" class="btn btn-navy btn-sm nav-cta">Connect With Us</a>
     <button class="nav-toggle" data-nav-toggle aria-label="Open menu">Menu</button>
   </div>
 </header>
@@ -58,12 +47,11 @@
     <button class="nav-toggle" data-nav-close>Close</button>
   </div>
   <nav class="mobile-panel-links" aria-label="Mobile">
-    <a href="programmes.html">Programmes</a>
-    <a href="services.html">Services</a>
-    <a href="work.html">Work</a>
-    <a href="about.html">About Us</a>
-    <a href="careers.html">Careers</a>
-    <a href="insights.html">Insights</a>
+    <a href="index.html">Home</a>
+    <a href="training.html">Training (Trainer's)</a>
+    <a href="training-infra.html">Training Infra</a>
+    <a href="labs.html">Labs</a>
+    <a href="vouchers.html">Vouchers</a>
     <a href="contact.html">Contact</a>
   </nav>
 </div>
@@ -73,9 +61,9 @@
   <section class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1600&q=80')"></div>
     <div class="wrap page-hero-inner">
-      <p class="eyebrow reveal">Programme catalogue</p>
-      <h1 class="display-1 reveal">Twelve programmes, six tracks, one rolling calendar</h1>
-      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Open a row to see the module breakdown for that programme. Dates shown are the next open-enrollment cohort; private in-house dates are set separately.</p>
+      <p class="eyebrow reveal">Training</p>
+      <h1 class="display-1 reveal">Twelve programmes, six tracks, one trainer network</h1>
+      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Open a row to see the module breakdown and lab access for that programme. Dates shown are the next open-enrollment cohort; private in-house dates are set separately.</p>
     </div>
   </section>
 
@@ -103,7 +91,7 @@
       <div>
         <p class="eyebrow reveal">What a learner leaves with</p>
         <h2 class="display-2 reveal" style="margin-top:0.8rem;">A dated, verifiable certificate</h2>
-        <p class="lede reveal" style="margin-top:1rem;">Every programme ends in an assessment and a certificate carrying a registry number that a sponsoring employer can check against the cohort report we send them. Compliance certificates carry a renewal date; technical and delivery certificates don't expire.</p>
+        <p class="lede reveal" style="margin-top:1rem;">Every programme ends in an assessment and a certificate a sponsoring employer can verify by contacting us directly. Compliance certificates carry a renewal date; technical and delivery certificates don't expire. Need the certification exam itself, not just the course? See <a href="vouchers.html" style="text-decoration:underline;">exam vouchers</a>.</p>
         <a href="contact.html" class="btn btn-outline reveal" style="margin-top:1.5rem;">Ask about verifying a certificate</a>
       </div>
       <div class="cert reveal">
@@ -112,7 +100,7 @@
             <p class="eyebrow">Certificate of Completion</p>
             <p class="cert-name">A. Sample Learner</p>
           </div>
-          <div class="cert-seal">OT<br>REGISTRY<br>VERIFIED</div>
+          <div class="cert-seal">OT<br>VERIFIED<br>TRAINER</div>
         </div>
         <p style="margin-top:0.6rem; max-width:44ch; position:relative; z-index:1;">has completed <strong>Site Reliability &amp; Incident Response</strong>, 21 contact hours, with a post-programme assessment score of 88%.</p>
         <div class="cert-foot">
@@ -121,7 +109,7 @@
             <p class="num" style="font-weight:700;">27 Oct 2026</p>
           </div>
           <div>
-            <p class="eyebrow" style="margin-bottom:0.3rem;">Registry no.</p>
+            <p class="eyebrow" style="margin-bottom:0.3rem;">Certificate no.</p>
             <p class="num" style="font-weight:700;">OT-2026-41207</p>
           </div>
         </div>
@@ -134,7 +122,7 @@
       <div class="cta-band section--navy reveal">
         <div class="blob blob--amber" style="width:300px; height:300px; bottom:-100px; right:-60px;"></div>
         <div style="position:relative; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
-          <h2 class="display-2" style="max-width:20ch;">Don't see the right programme for your team?</h2>
+          <h2 class="display-2" style="max-width:20ch;">Don't see the right trainer for your team?</h2>
           <a href="contact.html" class="btn btn-white">Request a custom build</a>
         </div>
       </div>
@@ -148,7 +136,7 @@
     <div class="footer-grid">
       <div>
         <span class="wordmark-text" style="color:#fff;">Open Trainings</span>
-        <p style="margin-top:1.1rem;">A training registrar designing and delivering corporate programmes across technical, compliance, leadership and operations tracks since 2015.</p>
+        <p style="margin-top:1.1rem;">Open Trainings supplies vetted corporate trainers, hands-on lab environments and official certification vouchers across technical, compliance, leadership and operations tracks since 2015.</p>
         <div class="footer-socials">
           <a href="#" aria-label="X">X</a>
           <a href="#" aria-label="LinkedIn">in</a>
@@ -158,12 +146,13 @@
         </div>
       </div>
       <div>
-        <h4>Learning Modes</h4>
+        <h4>What We Offer</h4>
         <ul>
-          <li><a href="services.html#engagement">In-Person Cohort</a></li>
-          <li><a href="services.html#engagement">Live Online</a></li>
-          <li><a href="services.html#engagement">Private In-House</a></li>
-          <li><a href="services.html#engagement">Train-the-Trainer</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="training-infra.html">Training Infra</a></li>
+          <li><a href="labs.html">Labs</a></li>
+          <li><a href="vouchers.html">Vouchers</a></li>
+          <li><a href="services.html">How We Work</a></li>
         </ul>
       </div>
       <div>
@@ -176,17 +165,15 @@
         </ul>
       </div>
       <div>
-        <h4>Registry Desks</h4>
+        <h4>Get in Touch</h4>
         <ul>
-          <li>Bangalore, India</li>
-          <li>Dubai, UAE</li>
-          <li>Nairobi, Kenya</li>
-          <li><a href="mailto:register@opentrainings.example">register@opentrainings.example</a></li>
+          <li>Noida, India</li>
+          <li><a href="mailto:info@opentrainings.org">info@opentrainings.org</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-base">
-      <span>&copy; <span data-year></span> Open Trainings Registry. All rights reserved.</span>
+      <span>&copy; <span data-year></span> Open Trainings. All rights reserved.</span>
       <div class="footer-legal">
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
@@ -210,15 +197,6 @@
       bar.appendChild(b);
     });
     OT_RENDER.initProgramFilters("#programmes-list", "#track-filters");
-
-    var navSearch = document.querySelector("[data-nav-search]");
-    if (navSearch) {
-      navSearch.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var val = navSearch.querySelector("input").value.trim();
-        window.location.href = "programmes.html" + (val ? "?q=" + encodeURIComponent(val) : "");
-      });
-    }
   });
 </script>
 <script src="assets/js/forms.js"></script>

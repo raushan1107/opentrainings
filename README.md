@@ -121,16 +121,23 @@ actually exists in the DOM.
 
 ## Pages
 
+Nav is minimal: `Home | Services ▾ (Training / Training Infra / Labs / Vouchers) | Contact`,
+with About/Careers/Work/Insights reachable from the footer only.
+
 | Page | Purpose |
 |---|---|
-| `index.html` | Home. Hero, sector marquee, headline stats, a 4-service teaser, next open cohorts, one featured case study, three field notes. |
-| `services.html` | All six services, the three engagement models (ledger table, not pricing cards), the diagnostic-to-report process, FAQ. |
-| `programmes.html` | The full 12-programme catalogue: filterable by track, searchable, each row expands into a module breakdown. Includes the sample-certificate mock-up. |
+| `index.html` | Home. Hero, accreditation strip, headline stats, a 4-pillar teaser (Training / Training Infra / Labs / Vouchers), next open cohorts, one featured case study, three field notes. |
+| `training.html` | The full 12-programme trainer catalogue: filterable by track, searchable, each row expands into a module breakdown. Includes the sample-certificate mock-up. |
+| `training-infra.html` | End-to-end logistics: classroom/venue, travel, food and workspace arrangement, for either our trainers or a client's own. |
+| `labs.html` | The four hands-on lab environments and the three ways to get access to one. |
+| `vouchers.html` | Certification exam voucher catalogue across six vendors, plus voucher-specific FAQ. |
+| `services.html` | "How We Work": the six supporting services, the three engagement models (ledger table, not pricing cards), the diagnostic-to-report process, FAQ. Footer-linked, not in the top nav. |
 | `work.html` | Five anonymised case studies with sector, scale, approach and measured results. |
 | `insights.html` | Field-notes/article index, loads via a skeleton state before the list renders. |
-| `about.html` | Company story, four operating commitments, the programme-design/delivery leadership roster. |
+| `about.html` | Company story and the four operating commitments. (The team roster was removed for confidentiality — see **Editing content**.) |
 | `careers.html` | Hiring philosophy and current open roles. |
-| `contact.html` | Intake form (validated, simulated submission) and the three regional registry desks (Bangalore, Dubai, Nairobi). |
+| `contact.html` | Intake form collecting name, email, phone, WhatsApp, company, team size, preferred contact method, need and message — everything required to follow up without asking again. |
+| `admin.html` | Key-gated dashboard listing every contact-form submission, with one-tap call/WhatsApp/email links. Not linked from the nav or footer — see **Backend** below. |
 | `terms.html` | Terms of Service. |
 | `privacy.html` | Privacy Policy, including how cohort/assessment data is handled and reported to sponsoring employers. |
 
@@ -146,9 +153,9 @@ then open `http://localhost:8000/index.html`. Opening the HTML files
 directly from disk (`file://`) also works, since nothing depends on `fetch`
 against local JSON — all content is loaded as a plain `<script>` global.
 
-## Backend: contact form & newsletter signup
+## Backend: contact form, newsletter signup & admin dashboard
 
-Submissions are written to **Azure Table Storage** by two **Azure
+Submissions are written to **Azure Table Storage** by three **Azure
 Functions**, deployed as the managed API of an **Azure Static Web App** —
 chosen because the site deploys via GitHub Actions to Azure, and Static Web
 Apps builds and deploys a `/api` folder as part of the exact same workflow,
@@ -156,16 +163,61 @@ with no separate backend hosting to set up.
 
 ```
 api/
-  src/functions/contact.js     POST /api/contact   -> writes to the "ContactRequests" table
-  src/functions/subscribe.js   POST /api/subscribe  -> writes to the "Subscribers" table
+  src/functions/contact.js         POST /api/contact          -> writes to the "ContactRequests" table
+  src/functions/subscribe.js       POST /api/subscribe        -> writes to the "Subscribers" table
+  src/functions/admin-contacts.js  GET  /api/admin/contacts   -> reads back every row in "ContactRequests"
   host.json, package.json
   local.settings.json.example  (copy to local.settings.json for local dev; that file is gitignored)
 .github/workflows/azure-static-web-apps.yml
 ```
 
-Both functions validate the input again server-side (never trust the
-client), then write one row per submission with a timestamp. `contact.js`
-also returns the `OT-YYYY-NNNNN` reference number the front end displays.
+`contact.js` and `subscribe.js` validate the input again server-side (never
+trust the client), then write one row per submission with a timestamp.
+`contact.js` also returns the `OT-YYYY-NNNNN` reference number the front end
+displays and, on success, swaps the form for an on-page thank-you panel
+showing that reference. The contact form requires name, email, phone,
+company and a message; WhatsApp is a separate field only when the visitor
+unchecks "same as my phone number" (it defaults to the phone number
+otherwise); team size, preferred contact method, what they need (training /
+training infra / labs / vouchers) and programme of interest are optional —
+everything required to follow up without going back to the visitor for
+basics.
+
+**Confirmation email (proof of concept):** after a submission is logged,
+`contact.js` best-effort sends the visitor a confirmation email (their
+reference number, what they asked about, and how to reach us directly) via
+`api/src/lib/confirmationEmail.js` (the HTML/text template) and
+`nodemailer` over plain SMTP. It's driven entirely by app settings —
+`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` — so it works
+with Gmail (an [app password](https://myaccount.google.com/apppasswords)),
+Outlook, SendGrid's SMTP relay, Mailtrap for testing, or any other SMTP
+account, without provisioning a new Azure resource. If those settings are
+missing, sending is skipped and logged as a warning — the submission is
+still recorded normally, since email is a nice-to-have on top of the
+request being logged, not a dependency of it. Full setup walkthrough
+(Gmail app password or SendGrid, plus troubleshooting) is in
+[`EMAIL_SETUP.md`](EMAIL_SETUP.md).
+
+`admin.html` is the dashboard for reading those submissions back: a table
+of every contact request with one-tap call/WhatsApp/email links, and a
+client-side search box. It isn't linked from the site's nav or footer
+(`noindex, nofollow` in its `<meta>` too) and calls `admin-contacts.js`,
+which checks a shared secret on every request:
+
+- The **`ADMIN_KEY`** app setting (any password string you choose) must
+  match the `x-admin-key` header the browser sends, or the endpoint returns
+  401. Without `ADMIN_KEY` set, it returns a clear 500 instead of silently
+  exposing data.
+- `admin.html` asks for that key once, then keeps it in `sessionStorage`
+  (cleared when the tab closes, never sent anywhere except that one
+  endpoint) so it doesn't have to be retyped on every refresh.
+- This is a **shared-secret gate, not per-person login** — anyone with the
+  key can see every submission. That's the deliberately simple option; if
+  you later want per-person accounts instead, Static Web Apps' built-in
+  authentication (GitHub/Microsoft login + a `staticwebapp.config.json`
+  route restricted to a specific role) is the stronger upgrade path, but
+  needs an extra manual role-assignment step in the Azure Portal after
+  deploy to actually restrict it to just you.
 
 **To actually go live, from your side (I can't provision Azure resources or
 push to GitHub from here):**
@@ -180,10 +232,17 @@ push to GitHub from here):**
    `az staticwebapp secrets`).
 3. Create an **Azure Storage Account** (Table Storage is enabled by
    default on any general-purpose account — no extra product to add).
-4. In the Static Web App's **Configuration → Application settings**, add
-   `AZURE_STORAGE_CONNECTION_STRING` with that storage account's connection
-   string (Storage Account → Access keys in the portal). Without this, both
-   endpoints return a clear 500 error instead of silently failing.
+4. In the Static Web App's **Configuration → Application settings**, add:
+   - `AZURE_STORAGE_CONNECTION_STRING` — that storage account's connection
+     string (Storage Account → Access keys in the portal). Without this, all
+     three endpoints return a clear 500 error instead of silently failing.
+   - `ADMIN_KEY` — a password of your choosing, used to unlock `admin.html`.
+     Pick something you'd be comfortable pasting into a browser prompt, not
+     your Azure account password.
+   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` —
+     optional; add these to turn on the client confirmation email. Leave
+     them unset to launch without it — the form still works, it just won't
+     send that email.
 5. Push to `main` — the workflow builds and deploys automatically.
 
 **Local development:** opening the site with a plain static server (as
@@ -222,9 +281,11 @@ Every push to `main` redeploys automatically via
 ## Editing content
 
 Almost everything a non-developer would want to change (services, the
-programme catalogue, case studies, team bios, FAQ, office addresses, stats)
-lives in `assets/js/data.js` as plain JS objects/arrays — edit that file and
-every page pulling from it updates automatically, no HTML editing required.
+programme catalogue, labs, vouchers, case studies, FAQ, office addresses,
+stats) lives in `assets/js/data.js` as plain JS objects/arrays — edit that
+file and every page pulling from it updates automatically, no HTML editing
+required. There is deliberately no team roster in `data.js` or on
+`about.html` — staff names/roles were removed for confidentiality.
 
 ## Known gaps / good next steps
 

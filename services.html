@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className += " js";</script>
+<title>Services · Open Trainings</title>
+<meta name="description" content="Six services: corporate training design, classroom and live online delivery, technical upskilling, train-the-trainer, assessment and certification, and learning operations consulting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="wordmark">
+      <span class="wordmark-badge">OT</span>
+      <span class="wordmark-text">Open Trainings<small>Infinite Upskilling</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-item">
+        <button type="button">Programmes <span class="nav-caret">&#9660;</span></button>
+        <div class="nav-dropdown">
+          <a href="programmes.html">All Programmes</a>
+          <a href="programmes.html?q=cloud">Cloud &amp; Infrastructure</a>
+          <a href="programmes.html?q=data">Data &amp; Analytics</a>
+          <a href="programmes.html?q=leadership">Leadership &amp; People</a>
+          <a href="programmes.html?q=compliance">Compliance &amp; Risk</a>
+          <a href="programmes.html?q=delivery">Software Delivery</a>
+          <a href="programmes.html?q=customer">Customer Operations</a>
+        </div>
+      </div>
+      <a href="services.html" aria-current="page">Services</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About Us</a>
+      <a href="careers.html">Careers</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <form class="nav-search" data-nav-search>
+      <input type="text" placeholder="Search programmes" aria-label="Search programmes">
+      <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
+    </form>
+    <a href="contact.html" class="btn btn-navy btn-sm nav-cta">Connect With Us</a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<div class="mobile-panel" data-mobile-panel>
+  <div class="mobile-panel-head">
+    <span class="wordmark-text">Open Trainings</span>
+    <button class="nav-toggle" data-nav-close>Close</button>
+  </div>
+  <nav class="mobile-panel-links" aria-label="Mobile">
+    <a href="programmes.html">Programmes</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="about.html">About Us</a>
+    <a href="careers.html">Careers</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<main>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="wrap page-hero-inner">
+      <p class="eyebrow reveal">Services</p>
+      <h1 class="display-1 reveal">Six services, run as one registrar process</h1>
+      <p class="lede reveal" style="margin-top:1.2rem; font-size:1.1rem;">Most engagements use several of these in sequence: a diagnostic, a build, a delivery run, and a handover. A few clients only need one piece. Both are normal.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div id="all-services"></div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="engagement">
+    <div class="wrap">
+      <p class="eyebrow reveal">How engagements are structured</p>
+      <h2 class="display-2 reveal" style="margin-top:0.8rem;">Three ways to bring us in</h2>
+      <p class="lede reveal" style="margin-top:1rem;">No packaged tiers with one plan marked as the popular choice. The right model depends on group size and whether this repeats annually.</p>
+      <div class="ledger-wrap reveal" style="margin-top:2.4rem; overflow-x:auto;">
+        <table class="ledger" id="engagement-ledger"></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two-up">
+      <div>
+        <p class="eyebrow reveal">How a build actually runs</p>
+        <h2 class="display-2 reveal" style="margin-top:0.8rem;">From diagnostic call to cohort report</h2>
+      </div>
+      <div class="reveal">
+        <ol class="index-list">
+          <li><div><strong>Diagnostic call.</strong> A 45-minute conversation on what the workforce needs to do differently, and what's stopping them now.</div></li>
+          <li><div><strong>Material review.</strong> For programmes over 20 seats, we review real workflows, tickets or case material so examples aren't generic.</div></li>
+          <li><div><strong>Curriculum build.</strong> Modules, assessment questions and facilitation guides drafted and reviewed with the client's subject owner.</div></li>
+          <li><div><strong>Pilot cohort.</strong> A first run, often smaller, with a debrief before the calendar opens to the rest of the group.</div></li>
+          <li><div><strong>Full delivery.</strong> Scheduled cohorts through to completion, in person or live online.</div></li>
+          <li><div><strong>Cohort report.</strong> Assessment results, completion rates and facilitator notes sent back to the sponsoring team.</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <p class="eyebrow reveal">Questions we get before signing</p>
+      <h2 class="display-2 reveal" style="margin-top:0.8rem;">Frequently asked</h2>
+      <div id="faq-list" style="margin-top:2.2rem;"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band section--navy reveal">
+        <div class="blob blob--cyan" style="width:300px; height:300px; top:-110px; right:-60px;"></div>
+        <div style="position:relative; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
+          <h2 class="display-2" style="max-width:18ch;">Not sure which service fits your team yet?</h2>
+          <a href="contact.html" class="btn btn-white">Book a diagnostic call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <span class="wordmark-text" style="color:#fff;">Open Trainings</span>
+        <p style="margin-top:1.1rem;">A training registrar designing and delivering corporate programmes across technical, compliance, leadership and operations tracks since 2015.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="YouTube">yt</a>
+        </div>
+      </div>
+      <div>
+        <h4>Learning Modes</h4>
+        <ul>
+          <li><a href="services.html#engagement">In-Person Cohort</a></li>
+          <li><a href="services.html#engagement">Live Online</a></li>
+          <li><a href="services.html#engagement">Private In-House</a></li>
+          <li><a href="services.html#engagement">Train-the-Trainer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Registry Desks</h4>
+        <ul>
+          <li>Bangalore, India</li>
+          <li>Dubai, UAE</li>
+          <li>Nairobi, Kenya</li>
+          <li><a href="mailto:register@opentrainings.example">register@opentrainings.example</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span data-year></span> Open Trainings Registry. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="contact-bar" data-contact-bar></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/render.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    OT_RENDER.renderServices("#all-services");
+    OT_RENDER.renderEngagementLedger("#engagement-ledger");
+    OT_RENDER.renderFAQ("#faq-list");
+
+    var navSearch = document.querySelector("[data-nav-search]");
+    if (navSearch) {
+      navSearch.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var val = navSearch.querySelector("input").value.trim();
+        window.location.href = "programmes.html" + (val ? "?q=" + encodeURIComponent(val) : "");
+      });
+    }
+  });
+</script>
+<script src="assets/js/forms.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

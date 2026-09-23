@@ -1,0 +1,14 @@
+{
+  "name": "opentrainings-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Azure Functions API backing the Open Trainings contact form and briefing-list signup. Deployed as the managed API of the Azure Static Web App.",
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.1",
+    "@azure/data-tables": "^13.2.2"
+  }
+}

@@ -167,7 +167,7 @@
 
   function load(key) {
     gateError.textContent = "";
-    return fetch("/api/admin/contacts", { headers: { "x-admin-key": key } })
+    return fetch("/api/admin-contacts", { headers: { "x-admin-key": key } })
       .then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (data) {
           if (!res.ok) throw new Error(data.error || "Could not load submissions.");

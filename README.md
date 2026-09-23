@@ -165,7 +165,7 @@ with no separate backend hosting to set up.
 api/
   src/functions/contact.js         POST /api/contact          -> writes to the "ContactRequests" table
   src/functions/subscribe.js       POST /api/subscribe        -> writes to the "Subscribers" table
-  src/functions/admin-contacts.js  GET  /api/admin/contacts   -> reads back every row in "ContactRequests"
+  src/functions/admin-contacts.js  GET  /api/admin-contacts   -> reads back every row in "ContactRequests"
   host.json, package.json
   local.settings.json.example  (copy to local.settings.json for local dev; that file is gitignored)
 .github/workflows/azure-static-web-apps.yml

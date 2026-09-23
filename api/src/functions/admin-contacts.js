@@ -1,11 +1,19 @@
 /* ===================================================================
-   GET /api/admin/contacts
+   GET /api/admin-contacts
    Returns every logged contact-form submission, newest first, for the
    admin.html dashboard. Gated by a shared secret (the ADMIN_KEY app
    setting) checked against the "x-admin-key" request header, since
    Static Web Apps' managed API doesn't enforce per-Function auth
    levels the way a standalone Function App does -- the check has to
    happen in code here, not via the "authLevel" option below.
+
+   Route is a flat single segment ("admin-contacts"), not a nested one
+   ("admin/contacts") -- Static Web Apps' managed Functions integration
+   was silently 404-ing on the nested route (function-app logs showed it
+   loading fine; the request just never reached it), while the two
+   flat-route functions (contact, subscribe) worked the whole time. If
+   you add more admin endpoints later, keep them flat for the same
+   reason unless a future SWA release fixes nested custom routes.
    =================================================================== */
 
 const { app } = require("@azure/functions");
@@ -16,7 +24,7 @@ const TABLE_NAME = "ContactRequests";
 app.http("admin-contacts", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin/contacts",
+  route: "admin-contacts",
   handler: async (request, context) => {
     // Trimmed on both sides: a trailing space or newline picked up while
     // copy-pasting the key into the Azure Portal (or into the admin.html

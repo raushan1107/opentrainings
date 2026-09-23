@@ -12,7 +12,7 @@ window.OT_DATA = {
       eyebrow: "Open Trainings",
       title: "Trainers, Labs and Vouchers, In One Place",
       sub: "We supply expert corporate trainers, hands-on lab environments and official certification exam vouchers, so a programme ends in real practice and a recognised credential, not just a slide deck.",
-      statLine: "1,140+ trainer-led cohorts delivered across 14 countries since 2015",
+      statLine: "1,140+ trainer-led cohorts delivered across 14 countries since 2022",
       image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     },
     {
@@ -193,7 +193,7 @@ window.OT_DATA = {
   ],
 
   stats: [
-    { num: "1,140+", label: "Cohorts delivered since 2015" },
+    { num: "1,140+", label: "Cohorts delivered since 2022" },
     { num: "38,600+", label: "Learners trained to completion" },
     { num: "14", label: "Countries with active delivery" },
     { num: "2,400+", label: "Certification vouchers procured for client teams" }

@@ -1,5 +1,5 @@
 /* ===================================================================
-   GET /api/admin-contacts
+   GET /api/list-contacts
    Returns every logged contact-form submission, newest first, for the
    admin.html dashboard. Gated by a shared secret (the ADMIN_KEY app
    setting) checked against the "x-admin-key" request header, since
@@ -7,13 +7,14 @@
    levels the way a standalone Function App does -- the check has to
    happen in code here, not via the "authLevel" option below.
 
-   Route is a flat single segment ("admin-contacts"), not a nested one
-   ("admin/contacts") -- Static Web Apps' managed Functions integration
-   was silently 404-ing on the nested route (function-app logs showed it
-   loading fine; the request just never reached it), while the two
-   flat-route functions (contact, subscribe) worked the whole time. If
-   you add more admin endpoints later, keep them flat for the same
-   reason unless a future SWA release fixes nested custom routes.
+   Named/routed to avoid the word "admin" entirely: earlier versions of
+   this endpoint (function id/route "admin-contacts", and before that
+   the nested route "admin/contacts") both 404'd in production on this
+   Static Web App even though a trivial same-shape function ("ping")
+   registered fine on the first deploy, isolating the cause to the
+   literal string "admin" in the route rather than route nesting,
+   payload complexity, or a general "new functions don't register"
+   issue. If you rename this again, avoid "admin" in the route.
    =================================================================== */
 
 const { app } = require("@azure/functions");
@@ -21,10 +22,10 @@ const { TableClient } = require("@azure/data-tables");
 
 const TABLE_NAME = "ContactRequests";
 
-app.http("admin-contacts", {
+app.http("list-contacts", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin-contacts",
+  route: "list-contacts",
   handler: async (request, context) => {
     // Trimmed on both sides: a trailing space or newline picked up while
     // copy-pasting the key into the Azure Portal (or into the admin.html

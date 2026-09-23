@@ -165,7 +165,7 @@ with no separate backend hosting to set up.
 api/
   src/functions/contact.js         POST /api/contact          -> writes to the "ContactRequests" table
   src/functions/subscribe.js       POST /api/subscribe        -> writes to the "Subscribers" table
-  src/functions/admin-contacts.js  GET  /api/admin-contacts   -> reads back every row in "ContactRequests"
+  src/functions/list-contacts.js   GET  /api/list-contacts    -> reads back every row in "ContactRequests"
   host.json, package.json
   local.settings.json.example  (copy to local.settings.json for local dev; that file is gitignored)
 .github/workflows/azure-static-web-apps.yml
@@ -201,7 +201,9 @@ request being logged, not a dependency of it. Full setup walkthrough
 `admin.html` is the dashboard for reading those submissions back: a table
 of every contact request with one-tap call/WhatsApp/email links, and a
 client-side search box. It isn't linked from the site's nav or footer
-(`noindex, nofollow` in its `<meta>` too) and calls `admin-contacts.js`,
+(`noindex, nofollow` in its `<meta>` too) and calls `list-contacts.js`
+(named to avoid the literal word "admin" in the route -- see that file's
+top comment for why),
 which checks a shared secret on every request:
 
 - The **`ADMIN_KEY`** app setting (any password string you choose) must
